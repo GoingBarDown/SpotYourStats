@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS app_user (
+    id BIGSERIAL PRIMARY KEY,
+spotify_user_key TEXT UNIQUE, 
+user_id TEXT,
+created at TIMESTAMPZ NOT NULL DEFAULT NOW(),
+);
+
+CREATE TABLE IF NOT EXISTS oauth_token (
+user_id BIGINT PRIMARY KEY REFERENCES app_user(id) ON DELETE CASCADE,
+access_token TEXT NOT NULL,
+refresh_token TEXT NOT NULL,
+expires_at TIMESTAMPZ NOT NULL,
+updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+);

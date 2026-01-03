@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: vibevault-db
+    environment:
+      POSTGRES_DB: vibevault
+      POSTGRES_USER: vibevault
+      POSTGRES_PASSWORD: vibevault_pw
+    ports:
+      - "15432:5432"
+    volumes:
+      - vibevault_pgdata:/var/lib/postgresql/data
+
+volumes:
+  vibevault_pgdata:
